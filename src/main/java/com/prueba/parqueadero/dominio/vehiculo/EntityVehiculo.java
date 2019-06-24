@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Table(name = "vehiculo")
 public class EntityVehiculo {
 
-    private enum TipoVehiculo {
+    public enum TipoVehiculo {
         Carro, Moto
     }
 

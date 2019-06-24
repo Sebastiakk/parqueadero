@@ -1,7 +1,6 @@
 package com.prueba.parqueadero.dominio;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -21,6 +20,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ParqueaderoTest {
 	@Autowired()
 	private InterfaceParqueadero parqueadero;
+	private long resultado_id;
+
+	public long getResultado_id() {
+		return this.resultado_id;
+	}
+
+	public void setResultado_id(long resultado_id) {
+		this.resultado_id = resultado_id;
+	}
 
 	@Test
 	public void crear_parqueadero() {
@@ -29,8 +37,9 @@ public class ParqueaderoTest {
 			EntityParqueadero data = new EntityParqueadero(nombre_parquedero);
 			EntityParqueadero result = parqueadero.save(data);
 			assertEquals(nombre_parquedero, result.getNombre());
-			assertNotEquals(result.getid_parqueadero(), 0);
-			// id_parqueadero = result.getid_parqueadero();
+			assertTrue(result.getid_parqueadero() > 0);
+			// Se guarda el id del resultado para poximas pruebas
+			setResultado_id(result.getid_parqueadero());
 		} catch (Exception err) {
 			fail();
 		}
@@ -55,10 +64,12 @@ public class ParqueaderoTest {
 		try {
 			// Se crea el parquedero y se obtiene el id
 			crear_parqueadero();
+			// Se crea el parquedero nuevamente para y obtenemos el id
+			long id_parqueadero = getResultado_id();
 			// Se hace la consulta
-			EntityParqueadero result = parqueadero.findById(1);
-			// Se valida que el tamaño del resultado sea mayor a cero
-			assertEquals(1, result.getid_parqueadero());
+			EntityParqueadero result = parqueadero.findById(id_parqueadero);
+			// Se valida que el id del resultado sea igual al id del inser
+			assertEquals(id_parqueadero, result.getid_parqueadero());
 		} catch (Exception err) {
 			fail();
 		}
