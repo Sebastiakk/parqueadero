@@ -14,22 +14,22 @@ import org.springframework.data.repository.CrudRepository;
 public class ImplementParqueadero implements InterfaceParqueadero {
 
     @Autowired
-    private CrudRepository<EntityVehiculo, Long> parqueadero;
+    private CrudRepository<EntityParqueadero, Long> parqueadero;
 
     @Override
     @Transactional(readOnly = true)
-    public List<EntityVehiculo> findAll() {
-        return (List<EntityVehiculo>) parqueadero.findAll();
+    public List<EntityParqueadero> findAll() {
+        return (List<EntityParqueadero>) parqueadero.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public EntityVehiculo findById(long id) {
+    public EntityParqueadero findById(long id) {
         return parqueadero.findById(id).orElse(null);
     }
 
     @Override
-    public EntityVehiculo save(EntityVehiculo data) {
+    public EntityParqueadero save(EntityParqueadero data) {
         return parqueadero.save(data);
     }
 

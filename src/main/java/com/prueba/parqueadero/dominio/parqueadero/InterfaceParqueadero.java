@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface InterfaceParqueadero {
 
-    public List<EntityVehiculo> findAll();
+    public List<EntityParqueadero> findAll();
 
-    public EntityVehiculo findById(long id);
+    public EntityParqueadero findById(long id);
 
-    public EntityVehiculo save(EntityVehiculo data);
+    public EntityParqueadero save(EntityParqueadero data);
 }

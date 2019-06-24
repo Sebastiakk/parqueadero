@@ -1,6 +1,6 @@
 package com.prueba.parqueadero.controles;
 
-import com.prueba.parqueadero.dominio.parqueadero.EntityVehiculo;
+import com.prueba.parqueadero.dominio.parqueadero.EntityParqueadero;
 import com.prueba.parqueadero.dominio.parqueadero.InterfaceParqueadero;
 import com.prueba.parqueadero.interfaces.HttpRespuestas;
 
@@ -31,7 +31,7 @@ public class ControlParqueadero {
     }
 
     @GetMapping("/{id}")
-    public Object get_paqrueadero(@PathVariable long id) {
+    public Object get_parqueadero(@PathVariable long id) {
         try {
             return HttpRespuestas._200(parqueadero.findById(id), null);
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class ControlParqueadero {
     }
 
     @PostMapping("/")
-    public Object crear_parqueadero(@RequestBody EntityVehiculo body) {
+    public Object crear_parqueadero(@RequestBody EntityParqueadero body) {
         try {
             return HttpRespuestas._200(parqueadero.save(body), null);
         } catch (Exception e) {

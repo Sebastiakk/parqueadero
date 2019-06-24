@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * DaoParqueadero
  */
-public interface DaoParqueadero extends CrudRepository<EntityVehiculo, Long> {
+public interface DaoParqueadero extends CrudRepository<EntityParqueadero, Long> {
 
 }

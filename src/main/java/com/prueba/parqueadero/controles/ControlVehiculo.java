@@ -31,7 +31,7 @@ public class ControlVehiculo {
     }
 
     @GetMapping("/{id}")
-    public Object get_paqrueadero(@PathVariable long id) {
+    public Object get_vehiculo(@PathVariable long id) {
         try {
             return HttpRespuestas._200(vehiculo.findById(id), null);
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class ControlVehiculo {
     }
 
     @PostMapping("/")
-    public Object crear_parqueadero(@RequestBody EntityVehiculo body) {
+    public Object crear_vehiculo(@RequestBody EntityVehiculo body) {
         try {
             return HttpRespuestas._200(vehiculo.save(body), null);
         } catch (Exception e) {

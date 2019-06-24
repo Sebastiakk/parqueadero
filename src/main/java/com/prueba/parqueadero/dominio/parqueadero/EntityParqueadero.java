@@ -1,6 +1,5 @@
 package com.prueba.parqueadero.dominio.parqueadero;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,12 +13,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "paqueadero")
-public class EntityVehiculo implements Serializable {
+public class EntityParqueadero {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_parquero;
+    private long id_parqueadero;
 
     @Column(nullable = false)
     private String nombre;
@@ -36,12 +34,12 @@ public class EntityVehiculo implements Serializable {
     private int valor_carro_hora;
     private int valor_carro_dia;
 
-    public EntityVehiculo(String nombre) {
+    public EntityParqueadero(String nombre) {
         this.nombre = nombre;
         this.datos_estaticos();
     }
 
-    public EntityVehiculo() {
+    public EntityParqueadero() {
         this.datos_estaticos();
     }
 
@@ -55,12 +53,12 @@ public class EntityVehiculo implements Serializable {
         this.total_cupos = cupos_moto + cupos_carro;
     }
 
-    public long getId_parquero() {
-        return this.id_parquero;
+    public long getid_parqueadero() {
+        return this.id_parqueadero;
     }
 
-    public void setId_parquero(long id_parquero) {
-        this.id_parquero = id_parquero;
+    public void setid_parqueadero(long id_parqueadero) {
+        this.id_parqueadero = id_parqueadero;
     }
 
     public String getNombre() {

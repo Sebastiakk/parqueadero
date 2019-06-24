@@ -3,8 +3,6 @@ package com.prueba.parqueadero.dominio.vehiculo;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +15,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "vehiculo")
-public class EntityVehiculo implements Serializable {
+public class EntityVehiculo {
 
     private enum TipoVehiculo {
         Carro, Moto
     }
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_vehiculo;
@@ -36,22 +33,14 @@ public class EntityVehiculo implements Serializable {
     @Column(nullable = false)
     private String color;
 
-    private String cilintraje;
+    @Column(nullable = false)
+    private String marca;
+
+    private int cilintraje;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoVehiculo tipo_vehiculo;
-
-    public EntityVehiculo() {
-    }
-
-    public EntityVehiculo(String placa, String modelo, String color, String cilintraje, TipoVehiculo tipo_vehiculo) {
-        this.placa = placa;
-        this.modelo = modelo;
-        this.color = color;
-        this.cilintraje = cilintraje;
-        this.tipo_vehiculo = tipo_vehiculo;
-    }
 
     public long getId_vehiculo() {
         return this.id_vehiculo;
@@ -85,11 +74,19 @@ public class EntityVehiculo implements Serializable {
         this.color = color;
     }
 
-    public String getCilintraje() {
+    public String getMarca() {
+        return this.marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public int getCilintraje() {
         return this.cilintraje;
     }
 
-    public void setCilintraje(String cilintraje) {
+    public void setCilintraje(int cilintraje) {
         this.cilintraje = cilintraje;
     }
 
@@ -100,5 +97,4 @@ public class EntityVehiculo implements Serializable {
     public void setTipo_vehiculo(TipoVehiculo tipo_vehiculo) {
         this.tipo_vehiculo = tipo_vehiculo;
     }
-
 }
