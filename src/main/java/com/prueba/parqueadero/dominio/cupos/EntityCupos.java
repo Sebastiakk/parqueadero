@@ -29,14 +29,14 @@ public class EntityCupos {
     private long id_cupo;
 
     @OneToOne()
-    @JoinColumn(name = "id_vehiculo", unique = true)
+    @JoinColumn(name = "vehiculo", unique = true, nullable = false)
     private EntityVehiculo id_vehiculo;
 
     @ManyToOne()
-    @JoinColumn(name = "id_parqueadero")
+    @JoinColumn(name = "parqueadero", nullable = false)
     private EntityParqueadero id_parqueadero;
 
-    @Column(nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date hora_entrada;
 
