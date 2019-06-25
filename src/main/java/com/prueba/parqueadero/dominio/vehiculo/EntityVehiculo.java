@@ -27,19 +27,6 @@ public class EntityVehiculo {
     @Column(nullable = false)
     private String placa;
 
-    public EntityVehiculo() {
-    }
-
-    public EntityVehiculo(String placa, String modelo, String color, String marca, int cilintraje,
-            TipoVehiculo tipo_vehiculo) {
-        this.placa = placa;
-        this.modelo = modelo;
-        this.color = color;
-        this.marca = marca;
-        this.cilintraje = cilintraje;
-        this.tipo_vehiculo = tipo_vehiculo;
-    }
-
     @Column(nullable = false)
     private String modelo;
 
@@ -49,11 +36,37 @@ public class EntityVehiculo {
     @Column(nullable = false)
     private String marca;
 
+    @Column(nullable = false)
     private int cilintraje;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     public TipoVehiculo tipo_vehiculo;
+
+    @Column(nullable = false)
+    private String propietario;
+
+    public EntityVehiculo(String placa, String modelo, String color, String marca, int cilintraje,
+            TipoVehiculo tipo_vehiculo, String propietario) {
+        this.placa = placa;
+        this.modelo = modelo;
+        this.color = color;
+        this.marca = marca;
+        this.cilintraje = cilintraje;
+        this.tipo_vehiculo = tipo_vehiculo;
+        this.propietario = propietario;
+    }
+
+    public EntityVehiculo() {
+    }
+
+    public void setPropietario(String propietario) {
+        this.propietario = propietario;
+    }
+
+    public String getPropietario() {
+        return propietario;
+    }
 
     public long getId_vehiculo() {
         return this.id_vehiculo;

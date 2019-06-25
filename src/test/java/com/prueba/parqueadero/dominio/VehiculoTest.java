@@ -38,9 +38,11 @@ public class VehiculoTest {
 			String modelo = "2017";
 			String color = "Negro";
 			String marca = "Yamaha";
+			String poprietario = "Sebastian Ramirez";
 			int cilintraje = 200;
 			TipoVehiculo tipo_vehiculo = TipoVehiculo.Moto;
-			EntityVehiculo data = new EntityVehiculo(placa, modelo, color, marca, cilintraje, tipo_vehiculo);
+			EntityVehiculo data = new EntityVehiculo(placa, modelo, color, marca, cilintraje, tipo_vehiculo,
+					poprietario);
 			EntityVehiculo result = vehiculo.save(data);
 
 			assertEquals(result.getPlaca(), placa);
@@ -49,6 +51,7 @@ public class VehiculoTest {
 			assertEquals(result.getMarca(), marca);
 			assertEquals(result.getCilintraje(), cilintraje);
 			assertEquals(result.getTipo_vehiculo(), tipo_vehiculo);
+			assertEquals(result.getPropietario(), poprietario);
 			assertTrue(result.getId_vehiculo() > 0);
 			setId_vehiculo(result.getId_vehiculo());
 		} catch (Exception err) {
@@ -65,7 +68,9 @@ public class VehiculoTest {
 			String marca = "Bugatti";
 			int cilintraje = 1200;
 			TipoVehiculo tipo_vehiculo = TipoVehiculo.Carro;
-			EntityVehiculo data = new EntityVehiculo(placa, modelo, color, marca, cilintraje, tipo_vehiculo);
+			String poprietario = "Sebastian Ramirez";
+			EntityVehiculo data = new EntityVehiculo(placa, modelo, color, marca, cilintraje, tipo_vehiculo,
+					poprietario);
 			EntityVehiculo result = vehiculo.save(data);
 
 			assertEquals(result.getPlaca(), placa);
@@ -74,6 +79,7 @@ public class VehiculoTest {
 			assertEquals(result.getMarca(), marca);
 			assertEquals(result.getCilintraje(), cilintraje);
 			assertEquals(result.getTipo_vehiculo(), tipo_vehiculo);
+			assertEquals(result.getPropietario(), poprietario);
 			assertTrue(result.getId_vehiculo() > 0);
 			setId_vehiculo(result.getId_vehiculo());
 
@@ -97,16 +103,16 @@ public class VehiculoTest {
 	}
 
 	@Test
-	public void get_parquedero() {
+	public void get_vehiculo() {
 		try {
 			// Se crea el vehiculo y se obtiene el id
 			crear_carro();
-			// Se crea el parquedero nuevamente para y obtenemos el id
-			long id_parqueadero = getId_vehiculo();
+			// Se crea el vehiculo nuevamente para y obtenemos el id
+			long id_vehiculo = getId_vehiculo();
 			// Se hace la consulta
-			EntityVehiculo result = vehiculo.findById(id_parqueadero);
+			EntityVehiculo result = vehiculo.findById(id_vehiculo);
 			// Se valida que el id del resultado sea igual al id del inser
-			assertEquals(id_parqueadero, result.getId_vehiculo());
+			assertEquals(id_vehiculo, result.getId_vehiculo());
 		} catch (Exception err) {
 			fail();
 		}
